@@ -1,0 +1,30 @@
+@use "./variables" as *;
+
+@mixin container {
+  width: min(
+    calc(100% - #{$container-padding * 2}),
+    #{$container-width}
+  );
+  margin-inline: auto;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin section-spacing {
+  padding-block: $spacing-2xl;
+
+  @media (max-width: 768px) {
+    padding-block: $spacing-xl;
+  }
+}
+
+@mixin focus-visible {
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 3px;
+  }
+}

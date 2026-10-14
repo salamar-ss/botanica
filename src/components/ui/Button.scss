@@ -1,0 +1,60 @@
+@use "@/styles/variables" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  min-height: 46px;
+  padding: 12px 24px;
+  border: 1px solid transparent;
+  border-radius: $border-radius-sm;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color $transition-base,
+    color $transition-base,
+    border-color $transition-base;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  &--primary {
+    background: $color-primary;
+    color: $color-surface;
+
+    &:hover:not(:disabled) {
+      background: $color-primary-dark;
+    }
+  }
+
+  &--secondary {
+    background: $color-accent;
+    color: $color-text;
+
+    &:hover:not(:disabled) {
+      background: darken($color-accent, 7%);
+    }
+  }
+
+  &--outline {
+    border-color: $color-primary;
+    background: transparent;
+    color: $color-primary;
+
+    &:hover:not(:disabled) {
+      background: $color-primary;
+      color: $color-surface;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 3px;
+  }
+}

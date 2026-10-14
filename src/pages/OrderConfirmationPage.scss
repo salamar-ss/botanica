@@ -1,0 +1,122 @@
+.order-confirmation {
+  display: grid;
+  min-height: 70vh;
+  place-items: center;
+  padding: 64px 24px;
+  background: var(--color-background, #faf9f6);
+
+  &__content {
+    width: min(600px, 100%);
+    text-align: center;
+  }
+
+  &__icon {
+    display: grid;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 28px;
+    place-items: center;
+    border-radius: 50%;
+    background: #e6eadf;
+    color: #526347;
+    font-size: 30px;
+  }
+
+  &__eyebrow {
+    margin: 0 0 14px;
+    color: var(--color-primary, #6b705c);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+  }
+
+  &__title {
+    margin: 0;
+    color: #292b25;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1.2;
+  }
+
+  &__description {
+    max-width: 480px;
+    margin: 20px auto 32px;
+    color: #77786f;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  &__details {
+    display: grid;
+    gap: 0;
+    margin-bottom: 32px;
+    padding: 8px 24px;
+    border: 1px solid #e9e7df;
+    border-radius: 6px;
+    background: #fff;
+    text-align: left;
+  }
+
+  &__detail {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid #efeee8;
+    font-size: 13px;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    span {
+      color: #77786f;
+    }
+
+    strong {
+      color: #292b25;
+      font-weight: 500;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  &__button {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    border: 1px solid #6b705c;
+    border-radius: 4px;
+    background: #6b705c;
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background: #555a48;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #6b705c;
+      outline-offset: 4px;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .order-confirmation {
+    padding: 48px 16px;
+
+    &__details {
+      padding-inline: 16px;
+    }
+
+    &__detail {
+      gap: 12px;
+    }
+  }
+}

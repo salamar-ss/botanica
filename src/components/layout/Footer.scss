@@ -1,0 +1,45 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.footer {
+  border-top: 1px solid $color-border;
+  background: $color-surface;
+
+  &__container {
+    @include container;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-lg;
+    padding-block: $spacing-xl;
+  }
+
+  &__logo {
+    color: $color-text;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    text-decoration: none;
+  }
+
+  &__description {
+    margin: 0;
+    color: $color-text-muted;
+    font-size: 0.85rem;
+  }
+
+  &__copyright {
+    margin: 0;
+    color: $color-text-muted;
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 760px) {
+    &__container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $spacing-sm;
+    }
+  }
+}

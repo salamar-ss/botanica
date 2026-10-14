@@ -1,0 +1,99 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.wishlist-page {
+  min-height: 60vh;
+  padding-block: $spacing-2xl;
+
+  &__container { @include container; }
+
+  &__heading {
+    margin-bottom: $spacing-xl;
+    text-align: center;
+  }
+
+  &__eyebrow {
+    margin: 0 0 $spacing-sm;
+    color: $color-primary;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+  }
+
+  &__title {
+    margin: 0 0 $spacing-sm;
+    color: $color-text;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+  }
+
+  &__description { margin: 0; color: $color-text-muted; }
+
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+    color: $color-text-muted;
+    font-size: 0.9rem;
+  }
+
+  &__clear {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: $color-text-muted;
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+
+    &:hover { color: $color-primary; }
+    &:focus-visible { outline: 2px solid $color-primary; outline-offset: 4px; }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $spacing-lg;
+  }
+
+  &__empty {
+    max-width: 480px;
+    margin: 4rem auto;
+    text-align: center;
+
+    h2 { margin: $spacing-md 0 $spacing-sm; color: $color-text; font-size: 1.5rem; }
+    p { margin: 0 0 $spacing-lg; color: $color-text-muted; line-height: 1.7; }
+  }
+
+  &__empty-icon { color: $color-primary; font-size: 3.5rem; }
+
+  &__shop-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.25rem;
+    border-radius: $border-radius-md;
+    background: $color-primary;
+    color: $color-surface;
+    text-decoration: none;
+    transition: background-color $transition-base;
+
+    &:hover { background: $color-primary-dark; text-decoration: none; }
+    &:focus-visible { outline: 2px solid $color-primary; outline-offset: 3px; }
+  }
+
+  @media (max-width: 1000px) {
+    &__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 700px) {
+    &__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: $spacing-md; }
+  }
+
+  @media (max-width: 420px) {
+    &__grid { grid-template-columns: 1fr; }
+  }
+}

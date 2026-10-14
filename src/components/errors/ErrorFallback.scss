@@ -1,0 +1,59 @@
+.error-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 2rem;
+
+  &__content {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1.5rem;
+    border-radius: 50%;
+    background-color: #f8e8e5;
+    color: #9b3f32;
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+
+  &__title {
+    margin-bottom: 0.75rem;
+    color: #34352e;
+    font-size: 1.75rem;
+  }
+
+  &__description {
+    margin-bottom: 1.5rem;
+    color: #6b6d63;
+    line-height: 1.6;
+  }
+
+  &__button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #536747;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #405337;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #536747;
+      outline-offset: 3px;
+    }
+  }
+}

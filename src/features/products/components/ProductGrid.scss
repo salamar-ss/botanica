@@ -1,0 +1,58 @@
+@use "@/styles/variables" as *;
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: $spacing-lg;
+
+  &__error,
+  &__empty {
+    padding: $spacing-xl;
+    color: $color-text-muted;
+    text-align: center;
+  }
+
+  &__error {
+    color: $color-error;
+  }
+
+  &__retry {
+    padding: $spacing-sm $spacing-md;
+    border: 1px solid $color-primary;
+    border-radius: $border-radius-sm;
+    background: transparent;
+    color: $color-primary;
+
+    &:hover {
+      background: $color-primary;
+      color: $color-surface;
+    }
+  }
+
+  &__count {
+    margin: 0 0 18px;
+    color: #716b63;
+    font-size: 13px;
+  }
+
+  &__empty {
+    padding: 40px 20px;
+    border: 1px solid #ded8cf;
+    color: #716b63;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $spacing-md;
+  }
+
+  @media (max-width: 420px) {
+    grid-template-columns: 1fr;
+  }
+}
