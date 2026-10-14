@@ -4,8 +4,8 @@ Botanica is a modern e-commerce portfolio project for a natural beauty and skinc
 
 ## Live Demo
 
-- **Live Website:** Add your Vercel deployment URL here
-- **GitHub Repository:** Add your GitHub repository URL here
+- **Live Website:** https://botanica-store.vercel.app/
+- **GitHub Repository:** https://github.com/salamar-ss/botanica
 
 ## Features
 
