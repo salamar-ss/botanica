@@ -22,7 +22,7 @@ export default function CategoryList({ onSelectCategory }: CategoryListProps) {
 
       {isError && (
         <p className="category-list__error" role="alert">
-          {error instanceof Error ? error.message : "Could not load categories."}
+          {error?.message || "Could not load categories."}
         </p>
       )}
 

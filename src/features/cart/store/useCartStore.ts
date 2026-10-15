@@ -1,12 +1,10 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { Product } from "@/features/products/types";
-
 export interface CartItem {
   product: Product;
   quantity: number;
 }
-
 interface CartState {
   items: CartItem[];
   addItem: (product: Product, quantity?: number) => void;

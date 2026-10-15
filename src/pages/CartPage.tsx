@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { selectCartTotal, useCartStore } from "@/features/cart/store/useCartStore";
+import { selectCartTotal, selectCartCount, useCartStore } from "@/features/cart/store/useCartStore";
 import "./CartPage.scss";
 
 const FREE_SHIPPING_THRESHOLD = 75;
@@ -14,7 +14,7 @@ export default function CartPage() {
   const shipping = subtotal === 0 || subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
   const total = subtotal + shipping;
   const remainingForFreeShipping = Math.max(FREE_SHIPPING_THRESHOLD - subtotal, 0);
-  const itemCount = items.reduce((count, item) => count + item.quantity, 0);
+  const itemCount = useCartStore(selectCartCount);
 
   return (
     <main className="cart-page">

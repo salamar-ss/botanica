@@ -20,10 +20,11 @@ export const useWishlistStore = create<WishlistState>()(
 
       removeItem: (productId) => set((state) => ({ items: state.items.filter((item) => item.id !== productId) })),
 
-      toggleItem: (product) => {
-        const isFavorite = get().items.some((item) => item.id === product.id);
-        set((state) => ({ items: isFavorite ? state.items.filter((item) => item.id !== product.id) : [...state.items, product] }));
-      },
+      toggleItem: (product) => set((state) => ({
+        items: state.items.some((item) => item.id === product.id)
+          ? state.items.filter((item) => item.id !== product.id)
+          : [...state.items, product],
+      })),
 
       isFavorite: (productId) => get().items.some((item) => item.id === productId),
 

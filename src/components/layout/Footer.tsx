@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
 import "./Footer.scss";
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__container">
-        <a className="footer__logo" href="/">
+        <Link className="footer__logo" to="/">
           botanica.
-        </a>
+        </Link>
 
         <p className="footer__description">
           Thoughtful beauty, inspired by nature.

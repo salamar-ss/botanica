@@ -20,11 +20,7 @@ export default function ErrorFallback({ onRetry }: ErrorFallbackProps) {
           An unexpected error occurred. Please try again.
         </p>
 
-        <button
-          className="error-fallback__button"
-          type="button"
-          onClick={onRetry}
-        >
+        <button className="error-fallback__button" type="button" onClick={onRetry}>
           Try again
         </button>
       </div>

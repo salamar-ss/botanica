@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { selectCartTotal, useCartStore } from "@/features/cart/store/useCartStore";
+import { selectCartTotal, selectCartCount, useCartStore } from "@/features/cart/store/useCartStore";
 import { selectWishlistCount, useWishlistStore } from "@/features/wishlist/store/useWishlistStore";
 import "./Header.scss";
 
@@ -11,7 +11,7 @@ export default function Header() {
   const items = useCartStore((state) => state.items);
   const removeItem = useCartStore((state) => state.removeItem);
   const subtotal = useCartStore(selectCartTotal);
-  const cartCount = items.reduce((total, item) => total + item.quantity, 0);
+  const cartCount = useCartStore(selectCartCount);
   const wishlistCount = useWishlistStore(selectWishlistCount);
 
   useEffect(() => { setIsCartOpen(false); }, [location.pathname]);
@@ -58,32 +58,45 @@ export default function Header() {
 
             {isCartOpen && (
               <div className="header__cart-dropdown" id="header-cart-dropdown">
-                <div className="header__cart-heading"><h2>Your cart</h2><span>{cartCount} {cartCount === 1 ? "item" : "items"}</span></div>
+                <div className="header__cart-heading">
+                  <h2>Your cart</h2>
+                  <span>{cartCount} {cartCount === 1 ? "item" : "items"}</span>
+                </div>
 
                 {!items.length ? (
-                  <div className="header__cart-empty"><p>Your cart is empty.</p><Link to="/#products" onClick={() => setIsCartOpen(false)}>Discover our collection</Link></div>
+                  <div className="header__cart-empty">
+                    <p>Your cart is empty.</p>
+                    <Link to="/#products" onClick={() => setIsCartOpen(false)}>Discover our collection</Link>
+                  </div>
                 ) : (
                   <>
                     <div className="header__cart-items">
                       {items.map(({ product, quantity }) => (
                         <div className="header__cart-item" key={product.id}>
-                          <Link className="header__cart-image-link" to={`/products/${product.id}`} onClick={() => setIsCartOpen(false)}>
+                          <Link className="header__cart-image-link" to={`/products/${product.id}`}>
                             <img className="header__cart-image" src={product.thumbnail} alt={product.title} />
                           </Link>
+
                           <div className="header__cart-product">
-                            <Link className="header__cart-product-title" to={`/products/${product.id}`} onClick={() => setIsCartOpen(false)}>{product.title}</Link>
+                            <Link className="header__cart-product-title" to={`/products/${product.id}`}>{product.title}</Link>
                             <span className="header__cart-quantity">Qty: {quantity}</span>
                             <span className="header__cart-price">${(product.price * quantity).toFixed(2)}</span>
                           </div>
+
                           <button className="header__cart-remove" type="button" aria-label={`Remove ${product.title} from cart`} onClick={() => removeItem(product.id)}>×</button>
                         </div>
                       ))}
                     </div>
 
-                    <div className="header__cart-subtotal"><span>Subtotal</span><strong>${subtotal.toFixed(2)}</strong></div>
+                    <div className="header__cart-subtotal">
+                      <span>Subtotal</span>
+                      <strong>${subtotal.toFixed(2)}</strong>
+                    </div>
+
                     <p className="header__cart-note">Shipping is calculated at checkout.</p>
-                    <Link className="header__cart-view" to="/cart" onClick={() => setIsCartOpen(false)}>View cart</Link>
-                    <Link className="header__cart-checkout" to="/checkout" onClick={() => setIsCartOpen(false)}>Proceed to checkout</Link>
+
+                    <Link className="header__cart-view" to="/cart">View cart</Link>
+                    <Link className="header__cart-checkout" to="/checkout">Proceed to checkout</Link>
                   </>
                 )}
               </div>
